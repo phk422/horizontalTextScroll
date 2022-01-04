@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.scroll-inner {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
+}
+.scroll-wrap {
+  box-sizing: border-box;
+  min-width: 100%;
+  height: 100%;
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+}
+.scroll-wrap li {
+  height: 30px;
+  line-height: 30px;
+  list-style: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 20px;
+}
+.scroll {
+  display: inline-block;
+}
+
+.inner2 {
+  height: 30px;
+  overflow: hidden;
+  margin: 10px;
+  border: 1px solid red;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}

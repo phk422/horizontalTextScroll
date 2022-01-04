@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/index.css" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="./src/index.js" type="text/babel"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      // example
+      class App extends React.PureComponent {
+        constructor() {
+          super();
+        }
+        render() {
+          const arrTxt = [
+            "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",
+            "红红火火恍恍惚惚",
+            "吼吼吼吼",
+          ];
+          return (
+            <div className="inner2" style={{ width: "200px" }}>
+              <HorizontalTextScroll speed={1}>
+                <ul className="scroll">
+                  {arrTxt.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </HorizontalTextScroll>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
