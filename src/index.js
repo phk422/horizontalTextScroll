@@ -17,7 +17,7 @@ class HorizontalTextScroll extends React.PureComponent {
 
   wrapStyle() {
     const s = this.state.wrapWidth / (30 + this.props.speed * 5);
-    const animationStr = `move${this.state.tim} ${s}s linear infinite`
+    const animationStr = `move${this.state.tim} ${s}s linear infinite`;
     return {
       animation: animationStr,
       webkitAnimation: animationStr,
@@ -56,17 +56,36 @@ class HorizontalTextScroll extends React.PureComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { txtStyle, txtClassName } = this.props;
+    const { isScroll = true } = this.props;
+    const { width = "auto" } = txtStyle;
+    // 滚动时去除width
+    if (isScroll) {
+      delete txtStyle.width;
+    }
+    const scrollContent = (
+      <ul className="scroll">
+        {this.props.arrTxt.map((item) => (
+          <li key={item} className={txtClassName} style={txtStyle}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
     return (
-      <div className="scroll-inner" ref={(c) => (this.scrollInner = c)}>
+      <div
+        className="scroll-inner"
+        style={{ width }}
+        ref={(c) => (this.scrollInner = c)}
+      >
         <div
           className="scroll-wrap"
           ref={(c) => (this.scrollWrap = c)}
-          style={this.wrapStyle()}
+          style={isScroll ? this.wrapStyle() : {}}
         >
-          {children}
+          {scrollContent}
         </div>
-        <div className="scroll-wrap">{children}</div>
+        <div className="scroll-wrap">{scrollContent}</div>
       </div>
     );
   }

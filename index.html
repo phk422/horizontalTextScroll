@@ -11,6 +11,25 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script src="./src/index.js" type="text/babel"></script>
+
+    <style>
+      .txtClassName {
+        /* width: 90px; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 10px;
+      }
+
+      .inner2 {
+        height: 30px;
+        overflow: hidden;
+        margin: 10px;
+        border: 1px solid red;
+        padding: 0 20px;
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
@@ -20,6 +39,9 @@
       class App extends React.PureComponent {
         constructor() {
           super();
+          this.state = {
+            isScroll: false,
+          };
         }
         render() {
           const arrTxt = [
@@ -28,15 +50,24 @@
             "吼吼吼吼",
           ];
           return (
-            <div className="inner2" style={{ width: "200px" }}>
-              <HorizontalTextScroll speed={1}>
-                <ul className="scroll">
-                  {arrTxt.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </HorizontalTextScroll>
-            </div>
+            <>
+              <div className="inner2">
+                <HorizontalTextScroll
+                  speed={1}
+                  isScroll={this.state.isScroll}
+                  arrTxt={arrTxt}
+                  txtClassName="txtClassName"
+                  txtStyle={{width: "90px"}}
+                />
+              </div>
+              <button
+                onClick={() =>
+                  this.setState({ isScroll: !this.state.isScroll })
+                }
+              >
+                切换滚动
+              </button>
+            </>
           );
         }
       }

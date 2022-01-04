@@ -27,12 +27,3 @@
 .scroll {
   display: inline-block;
 }
-
-.inner2 {
-  height: 30px;
-  overflow: hidden;
-  margin: 10px;
-  border: 1px solid red;
-  padding: 0 20px;
-  margin-bottom: 20px;
-}
